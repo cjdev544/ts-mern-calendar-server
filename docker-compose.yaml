@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  db:
+    image: mongo:4.2.24
+    container_name: mern-calendar
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGODB_DATABASE: mern-calendar-db
+    volumes:
+      - ./mongo:/data/db
