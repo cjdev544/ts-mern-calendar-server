@@ -61,7 +61,13 @@ const eventCalendarController = {
     try {
       const eventUpdated = await eventCalendarServices.getCalendarEventById(id)
 
-      console.log(uid, eventUpdated?.user?._id.toString())
+      if (!eventUpdated) {
+        return res.status(404).json({
+          ok: false,
+          msg: 'Evento no encontrado',
+        })
+      }
+
       if (uid.toString() !== eventUpdated?.user?._id.toString()) {
         return res.status(401).json({
           ok: false,
@@ -94,9 +100,16 @@ const eventCalendarController = {
     const { id } = req.params
 
     try {
-      const eventUpdated = await eventCalendarServices.getCalendarEventById(id)
+      const event = await eventCalendarServices.getCalendarEventById(id)
 
-      if (uid.toString() !== eventUpdated?.user?._id.toString()) {
+      if (!event) {
+        return res.status(404).json({
+          ok: false,
+          msg: 'Evento no encontrado',
+        })
+      }
+
+      if (uid.toString() !== event?.user?._id.toString()) {
         return res.status(401).json({
           ok: false,
           msg: 'No tiene permisos para actualizar este evento',

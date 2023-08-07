@@ -13,7 +13,7 @@ export const jwtGenerator = (uid: ObjectId, name: string) => {
       },
       (err, token) => {
         if (err) {
-          console.log(err)
+          console.error(err)
           reject('El token no pudo ser generado')
         }
 

@@ -9,7 +9,6 @@ const userServices = {
 
   createUser: async (user: User): Promise<UserDB> => {
     const newUser = await UserModel.create(user)
-    console.log(newUser)
     return newUser
   },
 

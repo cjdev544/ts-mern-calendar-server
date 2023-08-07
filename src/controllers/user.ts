@@ -126,10 +126,6 @@ const userController = {
       token,
     })
   },
-
-  // deleteUserById: async (_req: Request, _res: Response) => {
-  //   return
-  // },
 }
 
 export default userController

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
 import { ObjectId } from 'mongoose'
-import { RequestWithToken } from '../../types'
+import { type RequestWithToken } from '../../types.d'
 
 interface Token {
   uid: ObjectId

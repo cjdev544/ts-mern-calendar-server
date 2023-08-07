@@ -7,7 +7,7 @@ import v1EventCalendarRouter from './v1/routes/eventCalendar'
 import { dbConfig } from './database/dbConfig'
 
 config()
-const app = express()
+export const app = express()
 const PORT = process.env.PORT || 3000
 
 // Database connection
@@ -16,9 +16,13 @@ dbConfig()
 // Middlewares
 app.use(express.json())
 app.use(cors())
-app.use(morgan('dev'))
+if (process.env.NODE_ENV !== 'test') {
+  app.use(morgan('dev'))
+}
 
 app.use('/api/v1/users', v1UsersRouter)
 app.use('/api/v1/events', v1EventCalendarRouter)
 
-app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`))
+export const server = app.listen(PORT, () =>
+  console.log(`Server listening on port: ${PORT}`)
+)
