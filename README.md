@@ -31,6 +31,12 @@
 
 1. Poner la variable de entorno en .env MONGODB_URI, con la cadena de conexión de MongoDB de producción
 
+2. Ejecutar el build para pasar de TypeScript a JavaScript
+```
+    npm run build
+    npm start
+```
+
 ## Stack utilizado
 
 - NodeJs
